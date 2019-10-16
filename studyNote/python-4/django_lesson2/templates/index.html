@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load myTag %}
+</head>
+<body>
+
+<p>{{ dic.name }}</p>
+<p>{{ dic.age|add:5}}</p>
+
+{#方式1#}
+<h1>{{ a|safe }}</h1>
+{#方式2#}
+{% autoescape off %}
+    <h1>{{ a }}</h1>
+{% endautoescape%}
+
+
+{% if dic.age > 20 %}
+    <h1>hello {{ dic.name }}</h1>
+    {% elif dic.age > 18%}
+    <h1>hello man</h1>
+    {% else %}
+    <h1>samll boy</h1>
+{% endif %}
+
+{% for info in dic %}
+  <h1>{{ forloop.counter }} :  {{ info }}  </h1>
+{% endfor %}
+
+
+<form action="{% url "login" %}" method="post">
+
+    <p>姓名 <input type="text" name="user"></p>
+    <p>年龄 <input type="text" name="pwd"></p>
+    <p><input type="submit"></p>
+
+    {% csrf_token %}
+</form>
+
+{#自定义模板#}
+
+{#1.filter 参数只能传一个#}
+{{ dic.age|filter_multi:3 }}
+{#simple 不能用在控制语句内如if else for...#}
+{% simple_tag_multi 3 5 %}
+
+</body>
+</html>

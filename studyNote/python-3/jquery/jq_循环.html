@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p>111</p>
+<p>222</p>
+<p>333</p>
+<p>444</p>
+
+
+
+<script src="jquery.js"></script>
+<script>
+     arr=[11,22,33];
+     //js jq混用
+    // for(var i=0;i<arr.length;i++){
+    //     $("p").eq(i).html(arr[i]).css("color","red");
+    // }
+
+     //方式1
+    // $.each(arr,function (x,y) {
+    //     console.log(x);//下标
+    //     console.log(y);//值
+    // });
+
+    //方式2
+    $("p").each(function () {
+       //console.log($(this))//所有p标签
+        $(this).html("hello")//所有p标签改为hello
+    });
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+
+
+
+server下的方法：
+bind()
+listen()
+accept()
+
+recv()
+send(string)
+sendall  传送的内容只能是bytes内容
+
+
+client下的方法：
+
+connect()
+recv()
+send(string)
+sendall

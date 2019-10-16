@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load staticfiles %}
+    {% load static %}
+    <style>
+        *{
+            margin: 0 0;
+            padding: 0 0;
+        }
+        body, html{width: 100%;min-height:100%;overflow:auto}
+
+        .page-head{
+            min-height: 100%;
+            width: 70%;
+            margin:0 15%;
+            background-color: gainsboro;
+            position: absolute;
+        }
+
+        {#.center-block {#}
+        {#    display: block;#}
+        {#    margin-left: auto;#}
+        {#    margin-right: auto;#}
+        {##}
+
+    </style>
+</head>
+<body>
+{#首页#}
+<div class="page-head">
+    {#首页导航条#}
+    <div class="header" role="navigation">
+        <ul class="nav nav-pills nav-justified" role="tablist">
+            <li role="presentation" class="active"><a href="/index.html/" aria-controls="home" role="tab" data-toggle="collapse pill">首页</a></li>
+            <li role="presentation"><a href="" aria-controls="profile" role="tab" data-toggle="pill">学员信息</a></li>
+            <li role="presentation"><a href="/mapPage.html/" aria-controls="mapPage" role="tab" data-toggle="collapse pill">地图页</a></li>
+            <li role="presentation"><a href="/video-0-0-0.html/" aria-controls="settings" role="tab" data-toggle="collapse pill">视频筛选页</a></li>
+            <li role="presentation"><a href="/img.html/" aria-controls="settings" role="tab" data-toggle="collapse pill">图片页</a></li>
+        </ul>
+    </div>
+    {% block page-content %}
+    {#首页轮播图#}
+    <div class="bxslider center-block">
+        {% for i in imgList %}
+            <div><a href="{{ i.target }}"><img src="{{ i.img }}" height="400px" width="100%"></a></div>
+        {% endfor %}
+    </div>
+
+    <div class="news">
+        <div><h2 class="bg-primary">最新公告</h2></div>
+        <ul class="list-inline">
+            {% for n in newList %}
+                <li>
+                    <div><h2>{{ n.title }}</h2></div>
+                    <div><strong>{{ n.summy }}</strong></div>
+                    {#   查看更多 应跳转后让其看到 detail #}
+                    <div><p>{{ n.detail }}</p></div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="course center-block">
+        <div><h2 class="bg-primary">课程</h2></div>
+        <ul class="list-inline">
+            {% for c in classList %}
+                <li style="padding: 40px;text-align: center">
+                    <div><img src="{{ c.img }}" width="200px" height="200px" alt="Responsive image" class="img-circle"></div>
+                    <div><h3><strong>{{ c.name }}</strong></h3></div>
+                    <div><p>{{ c.summy }}</p></div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="company">
+        <div><h2 class="bg-primary">企业合作</h2></div>
+        <ul class="list-inline">
+            {% for co in company %}
+                <li style="padding: 60px">
+                    <div>
+                        <a href="{{ co.ComAddr }}">
+                            <img src="{{ co.ComPhoto }}" height="200px" width="200px" alt="Responsive image" class="img-circle">
+                        </a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+
+    </div>
+
+    <div class="student">
+        <div><h2 class="bg-primary">学员展示</h2></div>
+        <ul class="list-inline">
+            {% for s in studentList %}
+                <li style="padding: 60px;text-align: center">
+                    <div>
+                        <img src="{{ s.img }}" height="200px" width="200px" alt="Responsive image" class="img-circle">
+                        <div><h3>{{ s.name }}</h3></div>
+                        <div><p>{{ s.summy }}</p></div>
+                        <div><a href="#">更多信息</a></div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endblock %}
+
+</div>
+<script src="/static/jquery-3.3.1.js"></script>
+<link href="/static/uploads/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+<script src="/static/uploads/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+
+<script>
+    $(document).ready(function(){
+      $('.slider').bxSlider();
+    });
+
+    $('.bxslider').bxSlider({
+      auto: true,
+      autoControls: true,
+      stopAutoOnClick: true,
+      pager: true,
+      slideWidth: 600
+    });
+</script>
+{% block scriptExtent %}
+
+{% endblock %}
+
+</body>
+</html>

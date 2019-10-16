@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<select name="" id="provinces">
+    <option value="">请选择省份</option>
+</select>
+<select name="" id="cities">
+    <option value="">请选择城市</option>
+</select>
+<script>
+    data={"河北":["石家庄","廊坊"],"山西":["晋城","大同"],"陕西":["西安","延安"]};
+
+    var pro_ele=document.getElementById("provinces");
+    var city_ele=document.getElementById("cities");
+
+    for(var i in data){
+        var ele=document.createElement("option");
+        ele.innerHTML=i;
+        pro_ele.appendChild(ele)
+    }
+   pro_ele.onchange=function () {
+       // console.log(this);//onchange监听到的标签 <select name="" id="provinces">
+       // console.log(this.selectedIndex);// 选中的省份的索引   1
+       // console.log(this.options[this.selectedIndex]);//选中的省份的option标签 <option>河北</option>
+      var cities_list=data[this.options[this.selectedIndex].innerHTML];
+       city_ele.options.length=1;//解决每次重新选择 上次加载的内容还在的问题
+       //console.log(city_ele);
+       for(var i=0;i<cities_list.length;i++){
+
+           var ele_2=document.createElement("option");
+           ele_2.innerHTML=cities_list[i];
+           city_ele.appendChild(ele_2);
+       }
+   }
+
+
+</script>
+</body>
+</html>

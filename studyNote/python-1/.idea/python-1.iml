@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="PYTHON_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="python-practice" />
+    <orderEntry type="module" module-name="python-2" />
+    <orderEntry type="module" module-name="MiniFTP" />
+    <orderEntry type="module" module-name="EasyClientFTP" />
+    <orderEntry type="module" module-name="EasyServerFTP" />
+    <orderEntry type="module" module-name="python-3" />
+    <orderEntry type="module" module-name="zhuce" />
+  </component>
+  <component name="TestRunnerService">
+    <option name="PROJECT_TEST_RUNNER" value="Unittests" />
+  </component>
+</module>

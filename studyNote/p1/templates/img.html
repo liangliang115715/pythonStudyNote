@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .imgs{
+            width: 100%;
+            margin: 0 auto;
+        }
+        .imgs .item{
+            width: 24.9%;
+            float: left;
+            padding: 5px 0.1%;
+        }
+        .imgs .item img{
+            width: 100%;
+        }
+        
+    </style>
+    
+    
+</head>
+<body>
+{% extends "index2.html" %}
+{% block page-content %}
+    
+    <h1>图片们</h1>
+    
+    <div class="imgs" id="img-cont">
+        <div class="item"><a href=""></a></div>
+        <div class="item"><a href=""></a></div>
+        <div class="item"><a href=""></a></div>
+        <div class="item"><a href=""></a></div>
+    </div>
+{% endblock %}
+{% block scriptExtent %}
+<script>
+
+    $(function(){
+        var obj = new scrollImg();
+        obj.initImg();
+        obj.scrollEvent();
+    });
+
+    function scrollImg(){
+        this.NID = 0;
+        this.LASTPOSITION = 0;
+        this.initImg = function () {
+            var that = this;
+            $.ajax({
+                url:"/get_img.html/",
+                type:"GET",
+                data:{"nid":that.NID},
+                dataType:"json",
+                success:function(arg){
+                    var img_list=arg.data;
+                    $.each(img_list,function(index,d){
+                        var eqv = ( index + that.LASTPOSITION )% 4;
+                        console.log(eqv);
+                        var tag = document.createElement("img");
+                        tag.src ="/"+ d.img;
+
+                        $("#img-cont").children().eq(eqv).children().append(tag);
+                        $(".imgs").children().eq(eqv).children().attr("href",d.src);
+
+                        if(index+1 === img_list.length){
+                            {#NID = index + 1;#}
+                            that.LASTPOSITION = eqv + 1;
+                        }
+                    }
+                    )
+                }
+            })
+        }
+        this.scrollEvent = function () {
+            var that = this;
+            $(window).scroll(function () {
+            var docHight = $(document).height();
+            var winHight = $(window).height();
+            var scrollTop = $(window).scrollTop();
+
+            if(winHight+scrollTop === docHight){
+                that.initImg();
+            }
+
+        });
+        }
+
+    }
+
+
+</script>
+
+{% endblock %}
+
+
+</body>
+</html>

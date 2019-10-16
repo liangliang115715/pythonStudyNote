@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div>hello</div>
+<p id="p1" alex="sb">ppppp</p>
+<p  alex="sb">SpppppB</p>
+<a href="">click</a>
+
+<p id="p2">rangta..</p>
+<div class="outer">
+
+    <div class="inner">inner
+        <p>inner p</p>
+    </div>
+    <p>alex</p>
+</div>
+
+<p>xianv</p>
+<ul>
+    <li class="begin guaiguai" id="159">111</li>
+    <li>222</li>
+    <li>333</li>
+    <li>555</li>
+    <li>666</li>
+    <li id="end">777</li>
+</ul>
+
+<input type="text">
+<input type="checkbox">
+<input type="submit">
+
+<script src="jquery.js"></script>
+<script>
+    //筛选器
+    //$("li").eq(2).css("color","red");
+    //$("li").first().css("color","red");
+    //查找筛选器
+    //$(".outer").children("p").css("color","pink");//只找子代
+    //$(".outer").find("p").css("color","pink");//找所有后代
+
+    //next
+    //$("li").eq(2).next().css("color","pink");//找下方一个
+    //$("li").eq(2).nextAll().css("color","pink");//找下方所有
+    //$("li").eq(2).nextUntil("#end").css("color","pink");//直到结束，不包括两边即（2,end）
+
+    //prev
+    //$("li").eq(4).prev().css("color","green");//4号之前一个
+    //$("li").eq(4).prevAll().css("color","green");//4号之前所有
+    //$("li").eq(4).prevUntil(".begin").css("color","green");//(begin,4)
+
+    //parent
+    //$(".outer .inner p").parent().css("color","red");//找父级
+    //console.log($(".outer .inner p").parents().html());//找到所有父级，向上一直找
+   //$(".outer .inner p").parentsUntil("body").css("color","red");//找到指定父级
+
+
+    //sibling
+    //$(".outer").siblings().css("color","red");//找兄弟级
+
+    //hasClass
+    //console.log($("#159").hasClass("guaiguai"))//返回布尔值true
+
+
+
+</script>
+
+</body>
+</html>

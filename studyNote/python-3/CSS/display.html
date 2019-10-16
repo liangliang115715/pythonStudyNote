@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*通过display可以将标签设为块级标签(block)或内联标签(inline)，*/
+        /*万能标签设为inline-block*/
+        div,p,span,a{
+            width: 100px;
+            height: 100px;
+        }
+        div{background-color: blue}
+        /*隐藏（ display:none）*/
+        p{background-color:yellow;display: none}
+        /*span{background-color:red}*/
+        /*a{background-color:purple}*/
+        /*span{background-color:red;display: block}*/
+        /*a{background-color:purple;display: block}*/
+        span{background-color:red;display: inline-block}
+        a{background-color:purple;display: inline-block}
+    </style>
+
+</head>
+<body>
+<div>div0000000</div>
+<p>pppppppppp</p>
+<span>spanspan</span>
+<a href="#">click</a>
+</body>
+</html>

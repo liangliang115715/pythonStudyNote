@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        #user-list > li {
+            cursor: pointer;
+        }
+
+    </style>
+
+</head>
+<body>
+<ul id="user-list">
+    {% for key,value in users.items() %}
+    <li uid="{{ key }}"> {{value.name}} ({{value.count}})</li>
+    {% endfor %}
+</ul>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script>
+    $(function () {
+        $('#user-list').on('click', 'li', function () {
+            var uid = $(this).attr('uid');
+            $.ajax({
+                url: '/vote',
+                method: 'post',
+                data: {'uid': uid},
+                success: function (arg) {
+                    console.log(arg)
+                }
+            })
+        });
+        get_vote();
+
+    });
+
+    function get_vote() {
+        $.ajax({
+            url: '/get/vote',
+            type: 'GET',
+            dataType: 'JSON',
+            success: function (arg) {
+
+                if (arg.status) {
+                    $('#user-list').empty();
+                    $.each(arg.data, function (k, v) {
+                        var li = document.createElement('li');
+                        li.setAttribute('uid', k);
+                        li.innerText = v.name + '(' + v.count + ')';
+                        $('#user-list').append(li)
+                    })
+                }
+                get_vote();
+            }
+        })
+    }
+
+
+</script>
+
+
+</body>
+</html>

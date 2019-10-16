@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .btn{
+            display: inline-block;
+            padding: 5px 5px;
+            color: black;
+            background-color: darkseagreen;
+        }
+    </style>
+
+
+</head>
+<body>
+
+<h1>INDEX AJAX</h1>
+<div>
+<h3>ajax提交</h3>
+    <a  class="btn" onclick="ajax1();">方式一</a>
+    <a  class="btn" onclick="ajax2();">方式二</a>
+</div>
+<div>
+    <h3>iframe+form</h3>
+    <iframe name="ifra" id="iframe" ></iframe>
+    <form action="ajax3/" id="fm" method="post" target="ifra">
+        <input name="root" value="666">
+    {#    <input type="submit" value="提交">#}
+        <a onclick="prevReload();">提交</a>
+    </form>
+</div>
+
+
+
+<div>
+    <h3>ajax上传</h3>
+    <input type="file" id="img">
+    <a  class="btn" onclick="ajax4();">Ajax上传</a>
+    <a  class="btn" onclick="ajax5();">原生dom上传</a>
+
+    <iframe name="ifra2" id="iframe2" style="display: none" ></iframe>
+    <form action="ajax4/" id="fm2" method="post" enctype="multipart/form-data" target="ifra2">
+    {#  form表单提交时必须设name属性否则后台获取不到值#}
+        <input name="root" value="666">
+        <input name="root2" value="777">
+        <input type="file" id="img2" name="img2">
+        <a onclick="prevReload2();" class="btn">iframe+form上传</a>
+    </form>
+</div>
+<div>
+<script src="/static/jquery-3.3.1.js"></script>
+<script>
+
+    function ajax1() {
+        $.ajax({
+            url:"ajax1/",
+            data:{"p":"123"},
+            type:"POST",
+            success:function(arg){
+                console.log(arg)
+            },
+            processData:false,
+            contentType:false,
+        })
+    }
+    function ajax2() {
+        var xhr= new XMLHttpRequest();
+        xhr.open("POST",'ajax2/');
+        xhr.onreadystatechange=function(arg){
+            if(xhr.readyState === 4){
+                console.log(xhr.responseText)
+            }
+        };
+        xhr.setRequestHeader("content-Type","application/x-www-form-urlencoded;charset-UTF-8");
+        console.log(data);
+        xhr.send("p","111");
+    }
+    function prevReload() {
+        document.getElementById("iframe").onload=reloadIframe;
+        document.getElementById("fm").submit();
+    }
+    {#function reloadIframe(ths){#}
+    {# 获取内容 方式一#}
+    {#    var content=ths.contentWindow.document.body.innerHTML;#}
+        {#var obj=JSON.parse(content);#}
+    {#    console.log(content);#}
+    {#方式二#}
+    {#    console.log($(ths).contents().find("body").html());#}
+    function reloadIframe(){
+    {# 获取内容 方式一#}
+        var content=this.contentWindow.document.body.innerHTML;
+        {#var obj=JSON.parse(content);#}
+        console.log(content);
+    }
+
+
+    function  ajax4() {
+        var data=new FormData();
+        data.append("f",document.getElementById("img").files[0]);
+        $.ajax({
+            url:"ajax1/",
+            data:data,
+            type:"POST",
+            success:function(arg){
+                console.log(arg)
+                },
+            processData:false,
+            contentType:false,
+            })
+    }
+    function ajax5(){
+        var xhr= new XMLHttpRequest();
+        var data=new FormData();
+        data.append("f",document.getElementById("img").files[0]);
+        console.log(data);
+        xhr.open("POST",'ajax2/');
+        xhr.onreadystatechange=function(arg){
+            if(xhr.readyState === 4){
+                console.log(xhr.responseText)
+            }
+        };
+        xhr.send(data);
+    }
+
+        function prevReload2() {
+        document.getElementById("iframe2").onload=reloadIframe2;
+        document.getElementById("fm2").submit();
+    }
+       function reloadIframe2(){
+        var content=this.contentWindow.document.body.innerHTML;
+        console.log(content);
+        {#var obj=JSON.parse(content);#}
+        {#console.log(content);#}
+        {#console.log(obj);#}
+    }
+
+
+
+</script>
+
+
+</body>
+</html>

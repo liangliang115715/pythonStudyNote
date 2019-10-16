@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>huhu</title>
+    <link rel="shortcut icon" href="img/bitbug_favicon2.ico" />
+</head>
+<body>
+
+<form action="http://127.0.0.1:8090/index" method="post" enctype="multipart/form-data">
+
+<h1>注册页面</h1>
+<p>用户名 <input type="text" name="username" placeholder="姓名"></p>
+<p>密码 <input type="password" name="pwd" placeholder="密码"></p>
+
+<p>爱好  炮<input type="checkbox" name="hobby">
+         枪<input type="checkbox" name="hobby"></p>
+<p>性别：男<input type="radio" name="sex">
+         女<input type="radio" name="sex"></p>
+
+省<select name="province">
+    <optgroup label="中国">
+        <option value="">河南省</option>
+        <option value="" selected>河北省</option>
+        <option value="">湖南省</option>
+        <option value="">湖北省</option>
+    </optgroup>
+  </select>
+
+    <lable for="159">兴趣</lable>
+    <input id="159"  type="text">
+
+    <fieldset>
+        <legend>cool</legend>
+        <input type="text">
+    </fieldset>
+
+<p><input type="file" name="put_file"></p>
+<p><input type="submit" value="上缴怪家"></p>
+<p><input type="button" value="暂无作用的上缴怪家"></p>
+<p><input type="reset" value="重置"></p>
+
+</form>
+
+</body>
+</html>

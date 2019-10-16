@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .search a,.videos a{
+            display: inline-block;
+            padding: 4px 8px;
+            border: 1px solid #265a88;
+            text-align: center;
+        }
+        .search a.active{
+            background-color: orange;
+            color: white;
+        }
+
+
+
+    </style>
+
+
+</head>
+<body>
+    {% extends "index2.html" %}
+    {% block page-content %}
+        <h1>this is the video section</h1>
+
+        <div class="search">
+            <h1>开始筛选</h1>
+
+            <div class="search_dir">
+                {% if kwargs.direct_id == 0 %}
+                    <a href="/video-0-{{ kwargs.subject_id }}-{{ kwargs.grade_id }}.html/" class="active">全部</a>
+                {% else %}
+                    <a href="/video-0-{{ kwargs.subject_id }}-{{ kwargs.grade_id }}.html/">全部</a>
+                {% endif %}
+
+                {% for item in direct_list %}
+                    {% if item.id == kwargs.direct_id %}
+                        <a href="/video-{{ item.id }}-{{ kwargs.subject_id }}-{{ kwargs.grade_id }}.html/" class="active">{{ item.name }}</a>
+                    {% else %}
+                        <a href="/video-{{ item.id }}-{{ kwargs.subject_id }}-{{ kwargs.grade_id }}.html/">{{ item.name }}</a>
+                    {% endif %}
+                {% endfor %}
+
+
+            </div>
+
+            <div class="search_sub">
+                {% if kwargs.subject_id == 0 %}
+                    <a href="/video-{{ kwargs.direct_id }}-0-{{ kwargs.grade_id }}.html/" class="active">全部</a>
+                {% else %}
+                    <a href="/video-{{ kwargs.direct_id }}-0-{{ kwargs.grade_id }}.html/">全部</a>
+                {% endif %}
+                {% for item in sub_list %}
+                    {% if item.id == kwargs.subject_id %}
+                        <a href="/video-{{ kwargs.direct_id }}-{{ item.id }}-{{ kwargs.grade_id }}.html/" class="active">{{ item.name }}</a>
+                    {% else %}
+                        <a href="/video-{{ kwargs.direct_id }}-{{ item.id }}-{{ kwargs.grade_id }}.html/">{{ item.name }}</a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <div class="search_grade">
+                {% if kwargs.grade_id == 0 %}
+                    <a href="//video-{{ kwargs.direct_id }}-{{ kwargs.subject_id }}-0.html/" class="active">全部</a>
+                {% else %}
+                    <a href="/video-{{ kwargs.direct_id }}-{{ kwargs.subject_id }}-0.html/">全部</a>
+                {% endif %}
+                {% for item in grade_list %}
+                    {% if item.id == kwargs.grade_id %}
+                        <a href="/video-{{ kwargs.direct_id }}-{{ kwargs.subject_id }}-{{ item.id }}.html/" class="active">{{ item.name }}</a>
+                    {% else %}
+                        <a href="/video-{{ kwargs.direct_id }}-{{ kwargs.subject_id }}-{{ item.id }}.html/">{{ item.name }}</a>
+                    {% endif %}
+
+                {% endfor %}
+            </div>
+
+        </div>
+
+        <div class="videos">
+            <h1>筛选结果</h1>
+            <div class="search_finish">
+            {% for vid in video_list %}
+                <a href="{{ vid.href }}">
+                    <img src="{{ vid.img }}" width="200px" height="200px">
+                    <div>{{ vid.title }}</div>
+                </a>
+            {% endfor %}
+            </div>
+        </div>
+
+
+    {% endblock %}
+
+
+
+
+
+
+
+</body>
+</html>

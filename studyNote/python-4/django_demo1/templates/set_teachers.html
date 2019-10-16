@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="set_teachers?nid={{ nid }}" method="post">
+    {% csrf_token %}
+
+    <select multiple size="5" name="new_teacher_ids">
+
+        {% for item in all_teacher_list %}
+{#            {% if item in obj_cls_teachers %}#}
+{#                <option value="{{ item.id }}" selected="selected">{{ item.name }}</option>#}
+{#            {% else %}#}
+{#                <option value="{{ item.id }}">{{ item.name }}</option>#}
+{#            {% endif %}#}
+            {% if item.id in id_list %}
+                <option value="{{ item.id }}" selected="selected">{{ item.name }}</option>
+            {% else %}
+                <option value="{{ item.id }}">{{ item.name }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+    <input type="submit" value="提交">
+</form>
+
+
+</body>
+</html>

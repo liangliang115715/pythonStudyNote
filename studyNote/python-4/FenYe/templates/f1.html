@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="f1.htmls" method="post" id="f1">
+
+{#    <p><input type="text" name="user">{{ obj.errors.user.0 }}</p>#}
+{#    <p><input type="text" name="age">{{ obj.errors.age.0}}</p>#}
+{#    <p><input type="text" name="pwd">{{ obj.errors.pwd.0 }}</p>#}
+{#    <p><input type="text" name="email">{{ obj.errors.email.0 }}</p>#}
+{#    <input type="submit" value="提交">#}
+{#    <input type="button" value="Ajax提价" onclick="AjaxInfo();">#}
+
+    <p>用户名:{{ obj.user }}{{ obj.errors.user.0 }}</p>
+    <p>年龄:{{ obj.age }}{{ obj.errors.age.0}}</p>
+    <p>密码:{{ obj.pwd }}{{ obj.errors.pwd.0 }}</p>
+    <p>e-mail:{{ obj.email }}{{ obj.errors.email.0 }}</p>
+    <input type="submit" value="提交">
+    <input type="button" value="Ajax提价" onclick="AjaxInfo();">
+
+</form>
+
+<script src="/static/jquery-3.3.1.js"></script>
+<script>
+
+    function AjaxInfo() {
+        $.ajax({
+            url:"f1.htmls",
+            type:"POST",
+            data:$("#F1").serialize(),
+            success:function (arg) {
+                console.log(arg);
+            }
+        })
+
+
+    }
+
+</script>
+</body>
+</html>

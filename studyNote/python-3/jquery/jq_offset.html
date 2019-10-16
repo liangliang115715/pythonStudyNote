@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .div1,.div2{
+            width: 100px;
+            height: 100px;
+        }
+        .div1{
+            border: 5px solid red;
+            padding: 20px;
+            margin: 1px;
+            background-color: aquamarine;
+        }
+        .div2{
+            background-color: beige;
+        }
+        .outer{
+            position: relative;
+        }
+    </style>
+
+
+
+</head>
+<body>
+
+<div class="div1"></div>
+<div class="outer">
+
+    <div class="div2"></div>
+
+</div>
+<script src="jquery.js"></script>
+<script>
+    //offset 查找相对于视口（当前视图页面）的偏移量
+    // console.log($(".div1").offset().top);
+    // console.log($(".div2").offset().top);
+
+    //position 相当于已经定位的父标签的偏移量
+    // console.log($(".div1").position().top);
+    // console.log($(".div2").position().top);
+
+    // //取标签内容的宽（width）高（height） 括号内加参数表示要修改后的值，默认不做修改
+    // console.log($(".div1").height());
+    // //innerheight 包括padding部分
+    // console.log($(".div1").innerHeight());
+    // //outerheight(true/false)  包括padding和border部分  参数为true包含margin部分,默认为false
+    //     console.log($(".div1").outerHeight());
+    // console.log($(".div1").outerHeight(true));
+
+
+
+</script>
+
+</body>
+</html>

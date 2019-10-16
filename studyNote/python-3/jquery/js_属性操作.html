@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="div1" con="c1"></div>
+<input type="checkbox">是否可见
+<input type="text" value="123">
+
+<div id="id1">
+
+    <p>pppp</p>
+</div>
+
+
+<script src="jquery.js"></script>
+
+<script>
+    //attr
+    //console.log($("div").attr("con","c2"));//attr(x,y) x为要找的属性，
+                                             // y为con属性要修改成的值
+
+    //console.log($(":checkbox").attr("checkted"));//undefined
+
+    //prop
+    //console.log($(":checkbox:first").prop("checked"));//false 未选中的状态返回false
+                                                        //用法和attr相同，但只能找默认属性
+    //html    相当于js内innerHtml
+    //console.log($("#id1").html());//<p>pppp</p>  html(),括号内加参数相当于替换所有内容
+
+    //text     相当于js内innerText
+    //console.log($("#id1").text());// pppp       html(),括号内加参数相当于替换所有文本
+
+    //val    取value值,只能取固有属性的value值
+    //console.log($(":text").val());//123 （）内参数相当于修改值
+
+    //css
+    //$("div").css({"color":"red","background-color":"grey"})//修改css样式，可通过字典设定多组属性
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

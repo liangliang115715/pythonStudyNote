@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .div1{
+            width: 200px;
+            height: 200px;
+            background-color:blue;
+            /*设置边框*/
+            border: 40px solid rebeccapurple;
+            /*内边距：字符与border框的边距默认为前后左右都有间距*/
+            padding: 40px;
+            /*外边距  border边框与body框的边距*/
+            margin: 20px;
+        }
+        .div2{
+            width: 200px;
+            height: 200px;
+            background-color:lightblue;
+            border: 40px solid red;
+        }
+        .outer{
+            width: 1000px;
+            height: 1000px;
+            background-color: aquamarine;
+        }
+        .outer2{
+            width:40px;
+            height: 40px;
+            background-color:yellowgreen;
+        }
+    </style>
+</head>
+<body>
+<div class="outer2"></div>
+<div class="outer">
+    冫冫
+    <div class="div1">hello div1</div>
+    <div class="div2">hello div2</div>
+</div>
+</body>
+</html>

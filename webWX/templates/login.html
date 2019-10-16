@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .login{
+            width: 200px;
+            margin: 0 auto;
+        }
+        .login>img{
+            height: 200px;
+            width: 200px;
+        }
+        .login>h2{
+            width: 200px;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="login">
+        <img id="userAvata" src="https://login.weixin.qq.com/qrcode/{{ qcode }}" alt="">
+        <h2>扫码登录，来玩啊骚年！</h2>
+    </div>
+
+
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+
+    <script>
+        $(function () {
+            check_login()
+        });
+
+        function check_login() {
+            var img = $('#userAvata');
+            $.ajax({
+                url:'/check/login',
+                method:'get',
+                dataType:'json',
+                success: function (arg) {
+                    if (arg.code===408){
+                        check_login();
+                    } else if (arg.code===201){
+                        img.attr('src',arg.avatar);
+                        check_login();
+                    } else if (arg.code===200){
+                        window.location.href =('/index')
+                    }
+                }
+            })
+
+        }
+
+    </script>
+
+
+</body>
+</html>

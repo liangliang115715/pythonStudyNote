@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div>hello</div>
+<p id="p1" alex="sb">ppppp</p>
+<p  alex="sb">SpppppB</p>
+<a href="">click</a>
+
+<p id="p2">rangta..</p>
+<div class="outer">
+
+    <div class="inner">inner
+        <p>inner p</p>
+    </div>
+    <p>alex</p>
+</div>
+
+<p>xianv</p>
+<ul>
+    <li>111</li>
+    <li>222</li>
+    <li>333</li>
+    <li>555</li>
+    <li>666</li>
+    <li>777</li>
+</ul>
+
+<input type="text">
+<input type="checkbox">
+<input type="submit">
+
+<script src="jquery.js"></script>
+<script>
+    //基本选择器
+    //$("#p1").css("color","red")
+
+    //层级选择器
+    // $(".outer p").css("color","pink");//后代选择器
+    // $(".outer>p").css("color","pink");//子代选择器,只对子代有关 对子代的子代无关
+    // $(".outer+p").css("color","pink");//毗邻选择器 下方邻居可选 上方不可选
+    // $(".outer~p").css("color","pink");//同上？，向上也不可找
+
+    //基本筛选器
+    // $("li:first").css("color","green"); // 第一个 last为最后一个
+    // $("ul li:eq(2)").css("color","green");//2号 从0开始
+    //$("ul li:even").css("color","green");//奇数  odd为偶数
+    //$("ul li:gt(2)").css("color","green");//2号之后  lt为2号之前
+
+    //属性选择器
+    //  $("[alex='sb']").css("color","grey");//单层属性查找
+    //  $("[alex='sb'][id='p1']").css("color","red");//多层属性查找
+
+
+    //表单选择器
+    //$("[type='text']").css("width","400px")//按属性找
+
+    //$(":text").css("width","20px")//表单选择器
+
+    //筛选器
+    //$("li").eq(2).css("color","red");
+    //$("li").first().css("color","red");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

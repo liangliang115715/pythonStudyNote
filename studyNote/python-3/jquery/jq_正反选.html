@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <button onclick="changeall()">全选</button>
+    <button onclick="reverse()">反选</button>
+    <button onclick="cancel()">全部取消</button>
+
+    <table border="5">
+        <tr>
+            <td>111</td>
+            <td><input type="checkbox" class="box"></td>
+        </tr>
+        <tr>
+            <td>222</td>
+            <td ><input type="checkbox" class="box"></td>
+        </tr>
+        <tr>
+            <td>333</td>
+            <td><input type="checkbox" class="box"></td>
+        </tr>
+        <tr>
+            <td>444</td>
+            <td ><input type="checkbox" class="box"></td>
+        </tr>
+    </table>
+<script>
+    function changeall() {
+        $("table input").each(function () {                   //找到input标签后进行遍历 把所有的input都加上checked 选中状态
+            $(this).prop("checked",true);
+
+        })
+    }
+    function cancel() {                                       //找到input标签后进行遍历 把所有的input都取消checked状态
+        $("table input").each(function () {
+            $(this).prop("checked",false);
+        })
+    }
+    function reverse() {
+        $("table input").each(function () {                    //遍历循环input
+            if ($(this).prop("checked")){                       // 如果有checked
+                $(this).prop("checked",false);                 // 用false取消
+            }
+            else {                                             //如果没有
+                ($(this).prop("checked", true));               //加上checked状态
+            }
+        })
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load staticfiles %}
+</head>
+<body>
+{#首页导航条#}
+<div class="header" role="navigation">
+    <ul class="nav nav-pills" role="tablist">
+        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="pill">首页</a></li>
+        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="pill">分页1</a></li>
+        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="pill">分页2</a></li>
+        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="pill">分页3</a></li>
+    </ul>
+</div>
+{#首页轮播图#}
+<div class="bxslider">
+  <div><img src="/static/images/coffee1.jpg"></div>
+  <div><img src="/static/images/coffee2.jpg"></div>
+  <div><img src="/static/images/coffee3.jpg"></div>
+</div>
+
+
+
+<script src="/static/jquery-3.3.1.js"></script>
+<link href="/static/uploads/bootstrap-3.3.7-dist/css/bootstrap.css/" rel="stylesheet" type="text/css">
+<script src="/static/uploads/bootstrap-3.3.7-dist/js/bootstrap.js/"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+
+<script>
+    $(document).ready(function(){
+      $('.slider').bxSlider();
+    });
+
+    $('.bxslider').bxSlider({
+      auto: true,
+      autoControls: true,
+      stopAutoOnClick: true,
+      pager: true,
+      slideWidth: 600
+    });
+</script>
+
+</body>
+</html>

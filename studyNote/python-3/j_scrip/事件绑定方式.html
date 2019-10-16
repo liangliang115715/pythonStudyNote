@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="v1">
+    <div class="v2">dddd</div>
+    <div class="v2">ttt</div>
+    <div class="v2">ccc</div>
+    <div class="v2">ffff</div>
+    <!--下方的this指代p这个标签对象 当点击时可获取到这个对象-->
+    <p id="p1" onclick="func(this)">pppppppp</p>
+
+</div>
+
+<script>
+    function func(th) {
+        ele=th.parentNode;//找到了p标签的父级对象
+
+        console.log(ele)
+    }
+
+    // var ele=document.getElementById("p1");
+    // ele.onclick=function () {
+    //     alert(123);
+    // };
+    // var ele2=document.getElementsByClassName("v2");
+    // for(var i=0;i<ele2.length;i++)
+    // {
+    // ele2[i].onclick=function ()
+    //    { alert(666);}
+    // }
+</script>
+</body>
+</html>

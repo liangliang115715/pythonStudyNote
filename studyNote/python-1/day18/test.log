@@ -1,0 +1,10 @@
+Fri,09 Nov 2018 10:39:11 day18_01.py[line:29] DEBUG debug message
+Fri,09 Nov 2018 10:39:11 day18_01.py[line:30] INFO info message
+Fri,09 Nov 2018 10:39:11 day18_01.py[line:31] WARNING warning message,beach
+Fri,09 Nov 2018 10:39:11 day18_01.py[line:32] ERROR error message,fool
+Fri,09 Nov 2018 10:39:11 day18_01.py[line:33] CRITICAL critical message,son
+Fri,09 Nov 2018 10:39:31 day18_01.py[line:29] DEBUG debug message
+Fri,09 Nov 2018 10:39:31 day18_01.py[line:30] INFO info message
+Fri,09 Nov 2018 10:39:31 day18_01.py[line:31] WARNING warning message,beach
+Fri,09 Nov 2018 10:39:31 day18_01.py[line:32] ERROR error message,fool
+Fri,09 Nov 2018 10:39:31 day18_01.py[line:33] CRITICAL critical message,son

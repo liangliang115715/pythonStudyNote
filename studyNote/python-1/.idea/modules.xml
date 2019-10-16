@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/python-1.iml" filepath="$PROJECT_DIR$/.idea/python-1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../python-2/.idea/python-2.iml" filepath="$PROJECT_DIR$/../python-2/.idea/python-2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../python-3/.idea/python-3.iml" filepath="$PROJECT_DIR$/../python-3/.idea/python-3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../python-practice/.idea/python-practice.iml" filepath="$PROJECT_DIR$/../python-practice/.idea/python-practice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../zhuce/.idea/zhuce.iml" filepath="$PROJECT_DIR$/../zhuce/.idea/zhuce.iml" />
+    </modules>
+  </component>
+</project>

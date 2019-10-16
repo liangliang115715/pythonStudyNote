@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<ul>
+    <li>111</li>
+    <li>111</li>
+    <li>111</li>
+    <li>111</li>
+</ul>
+<button>add</button>
+</body>
+
+<script src="jquery.js"></script>
+<script>
+    // //事件准备  在所有代码执行后执行此段代码 一般当scipt模块写在其他body内容之前时使用
+    // //方式一
+    // $(document).ready(function () {
+    //      $("ul li").html(555);
+    // });
+    // //方式二
+    // $(function(){
+    //     $("ul li").html(555);
+    // })
+
+
+
+    //事件委托
+    //可以给后加入的标签也绑定该事件
+    $("ul").on("click","li",function(){
+        alert(666);
+    });
+    //事件绑定
+    //bind
+    // $("ul").bind("click",function () {
+    //     alert(777);
+    // });
+    //click方法  后加入的无法绑定事件
+    // $("ul li").click(function () {
+    //     alert(888);
+    // });
+    //绑定事件
+    $("button").click(function () {
+        var $ele=$("<li>");
+        var len=$("ul li").length;
+        $ele.html(len+1);
+        $("ul").append($ele);
+    })
+
+
+
+</script>
+</html>

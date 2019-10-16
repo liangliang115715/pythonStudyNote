@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+{# 第二种引入外部文件的方式#}
+    {% load staticfiles  %}
+
+
+</head>
+<body>
+
+
+<h1>time:{{time}}</h1>
+
+
+{#第一种引入方式#}
+{#<script src="/static/jquery-3.3.1.js"></script>#}
+{#第二种引入方式#}
+<script src="{% static "jquery-3.3.1.js" %}"></script>
+<script>
+
+$("h1").css("color","red")
+
+</script>
+
+</body>
+</html>

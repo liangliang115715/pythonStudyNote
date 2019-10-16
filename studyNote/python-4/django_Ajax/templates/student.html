@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <style>
+        .icon {
+            margin: 0 5px;
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+
+<link rel="stylesheet" href="/static/plugins/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="/static/plugins/font-awesome/css/font-awesome.css">
+<div class="container">
+    <div style="padding: 20px 0;margin: 10px">
+        <a class="btn btn-primary add_student">添加</a>
+        <a class="btn btn-danger">删除</a>
+    </div>
+    <div>
+        <table class="table table-bordered  table-striped">
+            <thead>
+            <tr>
+                <td>序号</td>
+                <td>姓名</td>
+                <td>年龄</td>
+                <td>性别</td>
+                <td>班级</td>
+                <td>操作</td>
+            </tr>
+            </thead>
+            <tbody id="tb">
+            {% for row in stu_list %}
+                <tr name="{{ row.id }}">
+                    <td na="id">{{ row.id }}</td>
+                    <td na="name">{{ row.name }}</td>
+                    <td na="age">{{ row.age }}</td>
+                    <td na="gender">{{ row.gender }}</td>
+                    <td na="cs_id" cid="{{ row.cs_id }}">{{ row.cs.title }}</td>
+                    <td>
+                        <a class="glyphicon glyphicon-remove  icon del-row"></a>
+                        <a class="fa fa-pencil-square-o  icon edit-row"></a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+{#    <div class="modal fade" tabindex="-1" role="dialog">#}
+{#添加学生 模态框#}
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">添加学生</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="name">姓名</label>
+                        <input type="text" class="form-control" name="name" placeholder="请输入名字">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="age">年龄</label>
+                        <input type="text" class="form-control" name="age" placeholder="请输入年龄">
+                    </div>
+
+{#                    <div class="form-group">#}
+{#                        <label for="gender">性别</label>#}
+{#                        <div class="col-sm-10">#}
+{#                            <label class="radio-inline">#}
+{#                                <input type="radio" name="gender"  value="1">男#}
+{#                            </label>#}
+{#                            <label class="radio-inline">#}
+{#                                <input type="radio" name="gender" value="0">女#}
+{#                            </label>#}
+{#                        </div>#}
+{#                    </div>#}
+                    <div class="form-group">
+                        <label for="gender">性别</label>
+                        <div>
+                        <label class="radio-inline">
+                        <input type="radio" name="gender"  value="1">男
+                        </label>
+                        <label class="radio-inline">
+                        <input type="radio" name="gender"  value="0">女
+                        </label>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="gender">班级</label>
+                        <div>
+                            <select class="form-control" name="cs_id">
+                                {% for row in cls_list %}
+                                    <option value="{{ row.id }}">{{ row.title }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <span id="errorMsg" style="color: red;"></span>
+            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            <button type="button" class="btn btn-primary" id="addSave">保存</button>
+        </div>
+    </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+{#删除学生  模态框#}
+<div class="modal fade" id="delModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="alert alert-danger waring-del-row" role="alert">是否确认删除</div>
+    <button class="btn btn-default ensure-del-row" id="delNid" name="delNid" type="submit" >确定</button>
+    <button class="btn btn-default not-del-row" type="submit">取消</button>
+</div>
+
+{#编辑学生 模态框#}
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">编辑学生</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="text" style="display:none" name="id" na="id">
+                    <div class="form-group">
+                        <label for="name">姓名</label>
+                        <input type="text" class="form-control" name="name" placeholder="请输入名字">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="age">年龄</label>
+                        <input type="text" class="form-control" name="age" placeholder="请输入年龄">
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">性别</label>
+                        <div>
+                        <label class="radio-inline">
+                        <input type="radio" name="gender"  value="1">男
+                        </label>
+                        <label class="radio-inline">
+                        <input type="radio" name="gender"  value="0" >女
+                        </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>班级</label>
+                        <div>
+                            <select class="form-control" name="cs_id">
+                                {% for row in cls_list %}
+                                    <option value="{{ row.id }}">{{ row.title }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            <button type="button" id=editSave class="btn btn-primary editSave">保存</button>
+        </div>
+    </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<script src="/static/jquery-3.3.1.js"></script>
+<script src="/static/plugins/bootstrap/js/bootstrap.js"></script>
+<script>
+    /*添加学生*/
+    $(".container div .add_student").click(function () {
+        $("#addModal").modal("show");
+    });
+    $("#addSave").click(function () {
+        var post_dic={};
+        $("#addModal").find("input,select").each(function () {
+            var v=$(this).val();
+            var n=$(this).attr("name");
+            if(n==="gender"){
+                if($(this).prop("checked")){
+                    post_dic[n]=v;
+                }
+            }
+            else{
+                   post_dic[n]=v;
+                }
+        });
+        $.ajax({
+            url:"add_student",
+            type:"POST",
+            data:post_dic,
+            success:function (arg) {
+                var dict=JSON.parse(arg);
+                if(dict.status){
+                    {#creatRow(post_dic,arg.data);#}
+                    {#  $("#addModal").modal("hide");#}
+
+                    window.location.reload();
+
+                }
+                else{
+                    $("#errorMsg").text(dict.message);
+                }
+            }
+
+
+        })
+
+
+    });
+    /*删除学生*/
+    $("#tb").on("click",".del-row",function () {
+        $("#delModal").modal("show");
+        var delid=$(this).parent().parent().attr("name");
+        $("#delNid").val(delid);
+    });
+    $(".ensure-del-row").click(function () {
+        var delNid=$("#delNid").val();
+        $.ajax({
+            url: "del_student",
+            type: "POST",
+            data: {"delNid":delNid},
+            dataType:"JSON",
+            success:function (arg) {
+                {#arg=JSON.parse(arg);#}
+                if (arg.status){window.location.reload()}
+                else{
+                    alert("删除失败 错误原因:%s"%(arg.message));
+                    $("#delModal").modal("hide");
+                }
+            }
+        })
+    });
+    $(".not-del-row").click(function () {
+        $("#delModal").modal("hide");
+    });
+    /*编辑学生*/
+    {#事件绑定#}
+    $("#tb").on("click",".edit-row",function () {
+        $("#editModal").modal("show");
+        {#拿到已经存在于表中的各个框  然后拿到其属性及值再赋值给编辑框#}
+        {#下方循环  按顺序从最后一个框开始往前循环#}
+        var tds=$(this).parent().prevAll().each(function () {
+            var v=$(this).text();
+            var n=$(this).attr("na");
+            if(n==="cs_id"){
+                var cid=$(this).attr("cid");
+                $("#editModal select[name='cs_id']").val(cid)
+            }
+            else if(n==="gender"){
+                if(v=="True"){$("#editModal :radio[value='1']").prop("checked",true);}
+                else{$("#editModal :radio[value='0']").prop("checked",true);}
+            }
+            else{
+                $("#editModal input[name='"+n+"']").val(v)
+            }
+        });
+    });
+
+    $("#editSave").click(function (){
+        var post_dic={};
+        $("#editModal").find("input,select").each(function (){
+            var v=$(this).val();
+            var n=$(this).attr("name");
+            if(n==="gender"){
+                if($(this).prop("checked")){post_dic[n]=v;}
+            }
+            else{post_dic[n]=v;}
+        });
+        $.ajax({
+            url:"edit_student",
+            type:"POST",
+            data:post_dic,
+            success:function (arg) {
+                var dict=JSON.parse(arg);
+                if(dict.status){window.location.reload();}
+                else{alert(dict.message);$("#editModal").modal("hide")}
+            }
+        })
+    })
+
+
+
+
+</script>
+</body>
+</html>

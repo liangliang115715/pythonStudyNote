@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+<div>
+    <a href="add_students">添加</a>
+</div>
+<div>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+                <th>班级</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in stu_list %}
+                <tr nid="{{ row.id }}">
+                    <td>{{ row.name }}</td>
+                    <td>{{ row.age }}</td>
+                    <td>{{ row.gender }}</td>
+                    <td>{{ row.cs.title}}</td>
+                    <td><a href="del_students?nid={{ row.id }}">删除</a>
+                    |
+                    <a  onclick="remove_student(this)" href="#">AJax删除</a>
+                    |
+                    <a href="edit_students?nid={{ row.id }}">编辑</a></td>
+                </tr>
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+</div>
+{#<script src="../static/jquery-3.3.1.js"></script>#}
+{% load staticfiles %}
+<script src="{% static 'jquery-3.3.1.js' %}"></script>
+{#<link rel="stylesheet" href="{% static "jquery-3.3.1.js" %}">#}
+{#<script src="/app01/static/jquery.js"></script>#}
+<script>
+    function remove_student(ths) {
+        var nid=$(ths).parent().parent().attr("nid");
+        $.ajax({
+            url:"ajax1.html",
+            type:"GET",
+            data:{nid:nid},
+            success:function (arg) {
+
+                if(arg === '成功'){
+                    {#页面刷新删除法#}
+                    {#window.location.reload();#}
+                   {# 页面不刷新 用js删除 #}
+                    $(ths).parent().parent().remove();
+                }
+                else{alert(arg);}
+            }
+
+        })
+    }
+
+</script>
+
+
+</body>
+</html>

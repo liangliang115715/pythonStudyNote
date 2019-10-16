@@ -1,0 +1,11 @@
+{% extends "base.html"%}
+
+{#模板中修改的内容#}
+
+
+{% block content %}
+    {{ block.super }}
+    {% for student in student_list %}
+        <h2> 学生 {{ student }}</h2>
+    {% endfor %}
+{% endblock %}

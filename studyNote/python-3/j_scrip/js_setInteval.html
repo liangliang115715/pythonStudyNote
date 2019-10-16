@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #id1{
+            width: 200px;
+            height: 50px;
+
+        }
+
+    </style>
+</head>
+<body>
+
+
+<input type="text" id="id1" onclick="begin()" value>
+<button onclick="end()">停止</button>
+<script>
+    //定时器
+    var clock;
+    function showTime() {
+       var current_time=new Date().toLocaleString();
+       var ele=document.getElementById("id1");
+        ele.value=current_time
+    }
+    function begin() {
+        //只在第一次点击 clock为undefind时运行
+        //解决每次点击都会创建一个clock对象，
+        // 造成点击停止时只能停止最后一个clock对象的问题
+        if(clock==undefined){
+        showTime();
+        clock=setInterval(showTime,1000)
+        }
+
+    }
+    function end() {
+        clearInterval(clock);
+        //再清除clock对象的定时时将clock重置
+        // 可在下次点击时再次运行定时作用
+        clock=undefined;
+    }
+</script>
+</body>
+</html>

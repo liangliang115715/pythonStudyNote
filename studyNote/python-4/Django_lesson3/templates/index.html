@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        .head{
+            height: 50px;
+            width: 100%;
+            background-color: aquamarine;
+            color: white;
+            text-align: center;
+        }
+
+    </style>
+
+
+
+
+</head>
+<body>
+
+<div class="outer">
+
+    <div class="head"><h1>标题</h1></div>
+    <div class="content">
+        <a href="/addbook/">添加数据</a>
+        <a href="/update/">修改数据</a>
+        <a href="/delete/">删除数据</a>
+        <a href="/select/">查询书籍</a>
+    </div>
+
+    <hr>
+    <div class="querryResult">
+        {% for book in book_list %}
+            <div>
+                <p>{{ book.name }} {{ book.author }} {{ book.price }}</p>
+            </div>
+
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+
+</body>
+</html>
